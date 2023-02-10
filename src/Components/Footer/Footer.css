@@ -1,0 +1,16 @@
+.footer-container {
+  width: 100vw;
+  height: 35vh;
+
+  display: flex;
+  justify-content: space-between;
+
+  color: white;
+
+  background: rgb(0, 0, 44);
+}
+
+.footer-right {
+  display: flex;
+  flex-direction: column;
+}
