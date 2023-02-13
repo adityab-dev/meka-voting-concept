@@ -1,8 +1,8 @@
-import About from "../../Components/About/About";
-import Features from "../../Components/Features/Features";
-import Footer from "../../Components/Footer/Footer";
-import Header from "../../Components/Header/Header";
-import Steps from "../../Components/Steps/Steps";
+import About from "./About/About";
+import Features from "./Features/Features";
+import Footer from "./Footer/Footer";
+import Header from "./Header/Header";
+import Steps from "./Steps/Steps";
 
 export default function PersonalInfoPage() {
   return (

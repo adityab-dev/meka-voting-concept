@@ -7,11 +7,7 @@ import { inputNamesArray } from "../../constants/reg-input";
 export default function RegistrationPage() {
   return (
     <div className="reg-container">
-      <img
-        className="reg-img"
-        src={voting}
-        alt="Please Vote"
-      />
+      <img className="reg-img" src={voting} alt="Please Vote" />
 
       <section className="reg-form-container">
         <h1 className="reg-heading">Registration Form</h1>
@@ -20,24 +16,14 @@ export default function RegistrationPage() {
           {inputNamesArray.map((name) => {
             return (
               <div className="reg-form-inputs-labels">
-                <label
-                  htmlFor={name}
-                  className="reg-labels"
-                >
+                <label htmlFor={name} className="reg-labels">
                   {name}
                 </label>
-                <input
-                  className="reg-inputs"
-                  type="text"
-                  id={name}
-                />
+                <input className="reg-inputs" type="text" id={name} />
               </div>
             );
           })}
-          <button
-            className="reg-form-btn"
-            type="submit"
-          >
+          <button className="reg-form-btn" type="submit">
             SUBMIT
           </button>
         </form>

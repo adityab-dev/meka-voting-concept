@@ -1,4 +1,4 @@
-import lets_vote_img from "../../Assets/lets-vote-img.jpg";
+import lets_vote_img from "../../../Assets/lets-vote-img.jpg";
 
 import "./Header.css";
 

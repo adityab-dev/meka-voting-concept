@@ -1,0 +1,36 @@
+.elect-container {
+  display: flex;
+  justify-content: center;
+
+  padding-top: 8rem;
+}
+
+.elect-headings {
+  font-size: 1.5rem;
+  color: white;
+
+  margin-bottom: 1rem;
+}
+
+.elect-center {
+  width: 67.5%;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.elect-horizontal {
+  padding: 1rem;
+
+  border-radius: 5px;
+
+  display: flex;
+  justify-content: space-between;
+
+  background: gray;
+
+  font-size: 1.25rem;
+  font-weight: 500;
+
+  margin-bottom: 2rem;
+}

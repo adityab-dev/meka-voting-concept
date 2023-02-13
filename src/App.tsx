@@ -10,15 +10,39 @@ import RegistrationPage from "./Pages/Registration/Registration";
 import RulesPage from "./Pages/Rules/RulesPage";
 import VotingPanelPage from "./Pages/VotingPanel/VotingPanelPage";
 
+import {
+  headerPath,
+  loginPath,
+  registerPath,
+  personalInfoPath,
+  electionsPath,
+  rulesPath,
+  votingPath,
+} from "./constants/Paths";
+import HeaderNavLayout from "./Layouts/HeaderNavLayot/HeaderNavLayot";
+
 function App() {
   const router = createBrowserRouter([
-    { path: "/", element: <Header /> },
-    { path: "/register", element: <RegistrationPage /> },
-    { path: "/login", element: <LoginPage /> },
-    { path: "/personalInfo", element: <PersonInfoPage /> },
-    { path: "/election", element: <ElectionPage /> },
-    { path: "/rules", element: <RulesPage /> },
-    { path: "/voting", element: <VotingPanelPage /> },
+    { path: headerPath, element: <Header /> },
+    { path: registerPath, element: <RegistrationPage /> },
+    { path: loginPath, element: <LoginPage /> },
+    {
+      path: personalInfoPath,
+      element: <HeaderNavLayout />,
+      children: [
+        {
+          index: true,
+          element: <PersonInfoPage />,
+        },
+        {
+          path: electionsPath,
+          element: <ElectionPage />,
+        },
+      ],
+    },
+
+    { path: rulesPath, element: <RulesPage /> },
+    { path: votingPath, element: <VotingPanelPage /> },
   ]);
 
   return <RouterProvider router={router} />;

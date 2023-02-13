@@ -1,0 +1,113 @@
+.info-container {
+  background: rgb(0, 0, 29);
+}
+
+/* TODO => on without padding vp-ht-w isn't behaving as excepted */
+.info-header {
+  padding-top: 4rem;
+}
+
+.user-header-navlink {
+  list-style: none;
+}
+
+.user-header-navlink > a {
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+}
+
+.user-form-header-btn {
+  color: white;
+  font-size: 1.5rem;
+
+  background: rgb(26, 122, 212);
+
+  padding: 0.125rem 2rem;
+
+  border-radius: 5px;
+}
+
+.user-header-list {
+  display: flex;
+  gap: 3.5rem;
+
+  margin-left: 30rem;
+}
+
+.info-header {
+  display: flex;
+}
+
+.user-left {
+  width: 40vw;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.user-right {
+  width: 60vw;
+}
+
+.user-left-p {
+  margin: 0;
+}
+
+.user-left-btn {
+  background: rgb(42, 117, 187);
+
+  width: max-content;
+
+  color: white;
+  font-size: 1.25rem;
+
+  padding: 0.5rem 2rem;
+
+  border-radius: 5px;
+}
+
+.user-left-img {
+  height: 15rem;
+  width: 15rem;
+
+  border-radius: 100%;
+}
+
+.user-left-edit {
+  color: white;
+  font-size: 1.25rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-content-container {
+  display: flex;
+}
+
+.user-right-labels,
+.user-content-container {
+  color: rgb(65, 148, 175);
+  font-size: 1.05rem;
+}
+
+.user-right-list {
+  list-style: none;
+}
+
+.user-right-btm {
+  width: 45%;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-right-btm-val {
+  color: white;
+  font-size: 1.25rem;
+}
