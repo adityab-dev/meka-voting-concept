@@ -28,3 +28,5 @@ export const inputNamesArray = [
   RE_PASSWORD,
   ADHAR_NUM,
 ];
+
+export const loginNamesArray = [EMAIL, PASSWORD];

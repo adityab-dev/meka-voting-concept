@@ -1,0 +1,71 @@
+.login-container {
+  background: rgb(0, 0, 31);
+
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+}
+
+.login-img {
+  height: 60%;
+  width: 45%;
+}
+
+.login-margin-top {
+  margin-top: 8.5rem;
+}
+
+.login-heading {
+  font-weight: normal;
+  color: white;
+  font-size: 3rem;
+}
+
+.login-form-labels {
+  color: white;
+  font-size: 1.05rem;
+
+  margin-bottom: 0.35rem;
+}
+
+.login-form-forget {
+  color: white;
+
+  margin-top: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.login-form-links {
+  color: rgb(116, 130, 211);
+}
+
+.login-form-container {
+  margin-left: 4rem;
+}
+
+.login-form-label-input {
+  display: flex;
+  flex-direction: column;
+}
+
+/* TODO => inputs has styles in registration as well */
+.login-form-inputs {
+  height: 2rem;
+  width: 17.5rem;
+
+  margin-bottom: 1rem;
+}
+
+.login-for-btn {
+  height: max-content;
+
+  padding: 0.5rem 2.5rem;
+
+  color: white;
+  font-size: 1.05rem;
+
+  background: rgb(81, 98, 173);
+
+  border-radius: 5px;
+}
