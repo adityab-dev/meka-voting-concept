@@ -1,0 +1,85 @@
+.reg-container {
+  height: 100vh;
+  width: 100vw;
+
+  display: flex;
+
+  background: rgb(0, 0, 36);
+}
+
+.reg-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.reg-labels {
+  color: white;
+  font-size: 1rem;
+
+  margin-bottom: 0.25rem;
+}
+
+.reg-inputs {
+  width: 20rem;
+  height: 2rem; 
+
+  font-size: 1.25rem;
+
+  margin-bottom: 0.75rem;
+}
+
+input:focus {
+  outline: none;
+
+  border: none;
+}
+
+.reg-form-btn {
+  height: max-content;
+  width: max-content;
+
+  padding: 0.75rem 2.5rem;
+
+  font-size: 1.05rem;
+  color: white;
+
+  background: rgb(67, 86, 194);
+
+  border: none;
+  border-radius: 5px;
+
+  margin: 0 auto;
+  margin-top: 1.75rem;
+}
+
+.reg-img {
+  height: 60vh;
+  width: 35vw;
+
+  border-radius: 10px;
+
+  margin-left: 7.5rem;
+  margin-top: 6rem;
+}
+
+.reg-heading {
+  color: white;
+
+  font-weight: normal;
+  font-size: 3.1rem;
+
+  margin-top: 5rem;
+}
+
+.reg-form-inputs-labels {
+  display: flex;
+  flex-direction: column;
+}
+
+.reg-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-left: 7.5rem;
+}
