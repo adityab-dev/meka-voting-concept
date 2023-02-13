@@ -1,6 +1,6 @@
 .footer-container {
   width: 100vw;
-  height: 35vh;
+  height: 45vh;
 
   display: flex;
   justify-content: space-between;
@@ -8,9 +8,107 @@
   color: white;
 
   background: rgb(0, 0, 44);
+
+  font-size: 1.25rem;
 }
 
 .footer-right {
   display: flex;
   flex-direction: column;
+
+  padding-top: 4rem;
+  padding-left: 2rem;
+}
+
+.footer-left-padding {
+  padding-left: 3rem;
+
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.75rem;
+}
+
+.footer-left-headings {
+  color: rgb(118, 134, 221);
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.footer-left,
+.footer-right {
+  width: 27.5%;
+}
+
+.footer-mid {
+  width: 42.5%;
+}
+
+.padding-top {
+  display: flex;
+  justify-content: space-around;
+
+  padding-top: 4rem;
+}
+
+.footer-mid-imgs {
+  padding-top: 4rem;
+
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+
+  font-size: 4.25rem;
+  color: rgb(83, 132, 196);
+}
+
+.footer-right-heading {
+  padding-bottom: 0.75rem;
+}
+
+.footer-right > input,
+.footer-right > textarea {
+  width: 60%;
+
+  border-radius: 3px;
+  border: none;
+}
+
+.footer-right > input {
+  height: 2.5rem;
+
+  margin-bottom: 0.75rem;
+}
+
+.footer-right > textarea {
+  height: 7.5rem;
+
+  margin-bottom: 1rem;
+}
+
+.footer-right > button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  height: 2.5rem;
+  width: 8.5rem;
+
+  background: rgb(46, 93, 163);
+
+  color: white;
+  font-size: 1.5rem;
+
+  margin-left: 5.5rem;
+}
+
+hr {
+  margin-top: 3.25rem;
+
+  height: 75%;
 }
