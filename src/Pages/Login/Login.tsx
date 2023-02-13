@@ -39,7 +39,7 @@ export default function LoginPage() {
             className="login-form-links"
             href="/login"
           >
-            Forgot Password?
+            Forgot Password ?
           </a>
           <p className="login-form-forget">
             Not a user?
@@ -50,7 +50,12 @@ export default function LoginPage() {
               Register now
             </a>
           </p>
-          <button className="login-for-btn" type="submit">LOGIN</button>
+          <button
+            className="login-for-btn"
+            type="submit"
+          >
+            LOGIN
+          </button>
         </form>
       </div>
     </div>

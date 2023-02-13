@@ -38,6 +38,7 @@
 
 .login-form-links {
   color: rgb(116, 130, 211);
+  text-decoration: none;
 }
 
 .login-form-container {
