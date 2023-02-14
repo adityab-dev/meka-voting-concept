@@ -1,0 +1,105 @@
+.voting-container {
+  height: 100vh;
+  width: 100vw;
+
+  background: rgb(0, 0, 34);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vote-heading {
+  margin: 0;
+
+  color: white;
+  font-weight: normal;
+  font-size: 2rem;
+
+  padding-bottom: 2rem;
+}
+
+.vote-center {
+  width: 70vw;
+  height: 85vh;
+}
+
+.vote-candidate-header {
+  display: flex;
+}
+
+.vote-candidate-left,
+.vote-candidate-right {
+  width: 10%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vote-candidate-mid {
+  width: 75%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.vote-candidate-font {
+  font-size: 1.75rem;
+}
+
+.vote-radios {
+  height: 2rem;
+  width: 2rem;
+
+  margin: 0;
+}
+
+.vote-expand {
+  transform: rotate(90deg);
+
+  font-size: 4rem;
+
+  margin-left: 3rem;
+}
+
+.voter-candidate-body {
+  width: 60vw;
+  height: 25vh;
+
+  background: white;
+
+  font-size: 1.5rem;
+
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.voter-candidate-body-center {
+  height: 85%;
+  width: 90%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.vote-candidate-border {
+  border: blue 3px solid;
+}
+
+.candidate-white {
+  background: white;
+
+  color: black;
+}
+
+.candidate-gray {
+  background: gray;
+
+  color: white;
+}
