@@ -29,6 +29,6 @@ export const inputNamesArray = [
   ADHAR_NUM,
 ];
 
-export const loginNamesArray = [EMAIL, PASSWORD];
+export const loginNamesArray: [typeof EMAIL, typeof PASSWORD] = [EMAIL, PASSWORD];
 
 export const persnalInfoNamesArray = [NAME, PARENT_NAME, DOB, EMAIL, ADHAR_NUM];

@@ -1,7 +1,17 @@
-export default function CandidateDescription() {
+export default function CandidateDescription(props: {
+  candidateDescriptionProps: {
+    value: string;
+    name: string;
+    age: number;
+    affiliation: string;
+    education: string;
+  };
+}) {
+  const { value, name, age, affiliation, education } = props.candidateDescriptionProps;
+
   return (
     <>
-      {/* {state.value === name ? (
+      {value === name ? (
         <div className="voter-candidate-body">
           <div className="voter-candidate-body-center">
             <div>Name : {name}</div>
@@ -10,7 +20,7 @@ export default function CandidateDescription() {
             <div>Education : {education}</div>
           </div>
         </div>
-      ) : null} */}
+      ) : null}
     </>
   );
 }

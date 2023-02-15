@@ -56,9 +56,11 @@
   width: 17.5rem;
 
   margin-bottom: 1rem;
+
+  font-size: 1.25rem;
 }
 
-.login-for-btn {
+.login-form-btn {
   height: max-content;
 
   padding: 0.5rem 2.5rem;
@@ -69,4 +71,6 @@
   background: rgb(81, 98, 173);
 
   border-radius: 5px;
+
+  cursor: pointer;
 }

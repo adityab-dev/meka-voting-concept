@@ -6,47 +6,39 @@ import CandidateLeft from "./Candidate-Left/Candidate-Left";
 import CandidateMid from "./Candidate-Mid/Candidate-Mid";
 import CandidatesRight from "./Candidates-Right/Candidates-Right";
 
-export default function VotingPanelCandidated(props: {
-  onRadioClick: (event: OnChange) => void;
-  state: { value: string };
+export default function VotingPanelCandidates(props: {
+  votingCandidatesProp: { onRadioClick: (event: OnChange) => void; value: string };
 }) {
-  const { onRadioClick, state } = props;
+  const { onRadioClick, value } = props.votingCandidatesProp;
 
   return (
     <>
       {votingList.map((candidate) => {
         const { name, education, affiliation, age, logo } = candidate;
+
+        const candidateLeftProps = { onRadioClick, name };
         const candidateMidProps = { name, affiliation, logo };
-        // const candidateDescriptionProps = {
-        //   value: state.value,
-        //   ...candidateMidProps,
-        //   age,
-        //   education,
-        // };
+        const candidateDescriptionProps = {
+          value,
+          name,
+          age,
+          affiliation,
+          education,
+        };
 
         return (
           <div key={name} style={{ paddingBottom: "2rem" }}>
             <div
               className={`vote-candidate-header candidate-white ${
-                state.value === name ? "vote-candidate-border candidate-gray" : ""
+                value === name ? "vote-candidate-border candidate-gray" : ""
               }`}
             >
-              <CandidateLeft name={name} onRadioClick={onRadioClick} />
+              <CandidateLeft candidatesleftProps={candidateLeftProps} />
               <CandidateMid candidateMidProps={candidateMidProps} />
               <CandidatesRight />
             </div>
 
-            {state.value === name ? (
-              <div className="voter-candidate-body">
-                <div className="voter-candidate-body-center">
-                  <div>Name : {name}</div>
-                  <div>Age : {age}</div>
-                  <div>Party : {affiliation}</div>
-                  <div>Education : {education}</div>
-                </div>
-              </div>
-            ) : null}
-            <CandidateDescription />
+            <CandidateDescription candidateDescriptionProps={candidateDescriptionProps} />
           </div>
         );
       })}

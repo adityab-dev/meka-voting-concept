@@ -1,11 +1,8 @@
 import "./Footer.css";
 
 import { FaTelegramPlane } from "react-icons/fa";
-import {
-  AiFillTwitterCircle,
-  AiFillFacebook,
-  AiFillInstagram,
-} from "react-icons/ai";
+import { AiFillTwitterCircle, AiFillFacebook, AiFillInstagram } from "react-icons/ai";
+import { loginPath, registerPath } from "../../../constants/Paths";
 
 function Footer() {
   return (
@@ -38,8 +35,12 @@ function Footer() {
         <div className="padding-top">
           <section>
             <div className="footer-left-headings">GetIN</div>
-            <div>Register</div>
-            <div>Login</div>
+
+            <div className="footer-left-headings-a">
+              <a href={registerPath}>Register</a>
+
+              <a href={loginPath}>Login</a>
+            </div>
           </section>
 
           <section>
@@ -69,18 +70,13 @@ function Footer() {
       <hr />
 
       <section className="footer-right">
-          <div className="footer-right-heading">Quick Feedback</div>
-          <input />
-          <textarea
-            name=""
-            id=""
-            cols={10}
-            rows={10}
-          ></textarea>
-          <button type="button">
-            <FaTelegramPlane />
-            Submit
-          </button>
+        <div className="footer-right-heading">Quick Feedback</div>
+        <input />
+        <textarea name="" id="" cols={10} rows={10}></textarea>
+        <button type="button">
+          <FaTelegramPlane />
+          Submit
+        </button>
       </section>
     </div>
   );

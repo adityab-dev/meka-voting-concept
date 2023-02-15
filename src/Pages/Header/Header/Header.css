@@ -33,7 +33,7 @@
   justify-content: space-between;
 }
 
-.header-right-header-center > a {
+.header-right-header-center {
   color: white;
   font-size: 1.35rem;
   text-decoration: none;
@@ -43,11 +43,15 @@
   padding: 0.1rem 1rem;
 
   font-size: 1.25rem;
-  color: white;
 
   background: rgb(59, 59, 192);
 
   border-radius: 5px;
+}
+
+.header-right-header-btn > a {
+  color: white;
+  text-decoration: none;
 }
 
 .header-right-main {
@@ -76,9 +80,10 @@
 }
 
 .header-right-main-btns {
-  color: white;
   font-size: 1.25rem;
   font-weight: 300;
+
+  color: white;
 
   background: rgb(59, 59, 192);
 
@@ -86,4 +91,9 @@
   margin-right: 2.25rem;
 
   border-radius: 10px;
+}
+
+.header-right-main-btns > a {
+  color: white;
+  text-decoration: none;
 }

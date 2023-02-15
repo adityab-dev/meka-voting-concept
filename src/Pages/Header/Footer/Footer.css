@@ -112,3 +112,13 @@ hr {
 
   height: 75%;
 }
+
+.footer-left-headings-a {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-left-headings-a > a {
+  color: white;
+  text-decoration: none;
+}

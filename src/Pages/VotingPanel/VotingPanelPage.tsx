@@ -6,7 +6,7 @@ import "./VotingPanelPage.css";
 
 import { useState } from "react";
 import { OnChange } from "../../Types/voting-candidate";
-import VotingPanelCandidated from "./VotingPanelCandidated/VotingPanelCandidated";
+import VotingPanelCandidates from "./VotingPanelCandidated/VotingPanelCandidated";
 
 const initialState = { value: "" };
 
@@ -21,11 +21,16 @@ export default function VotingPanelPage() {
     });
   }
 
+  const votingCandidateProps = {
+    onRadioClick: clickHandler,
+    value: state.value,
+  };
+
   return (
     <section className="voting-container">
       <div className="vote-center">
         <h1 className="vote-heading">Voting Panel</h1>
-        <VotingPanelCandidated state={state} onRadioClick={clickHandler} />
+        <VotingPanelCandidates votingCandidatesProp={votingCandidateProps} />
       </div>
     </section>
   );

@@ -1,10 +1,12 @@
 import { OnChange } from "../../../../Types/voting-candidate";
 
 export default function CandidateLeft(props: {
-  name: string;
-  onRadioClick: (event: OnChange) => void;
+  candidatesleftProps: {
+    name: string;
+    onRadioClick: (event: OnChange) => void;
+  };
 }) {
-  const { name, onRadioClick } = props;
+  const { name, onRadioClick } = props.candidatesleftProps;
 
   return (
     <div className="vote-candidate-left">
