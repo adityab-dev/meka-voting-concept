@@ -1,4 +1,4 @@
-const enum Paths {
+export const enum Paths {
   HEADER = "/",
   REGISTER = "/register",
   LOGIN = "/login",
@@ -16,12 +16,12 @@ export const electionsPath = Paths.PERSONAL_INFO + Paths.ELECTIONS;
 export const rulesPath = Paths.RULES;
 export const votingPath = Paths.VOTING;
 
-export const pathsArray = [
+export const pathsArray: Array<Paths> = [
   headerPath,
   loginPath,
   registerPath,
   personalInfoPath,
-  electionsPath,
+  electionsPath as Paths.ELECTIONS,
   rulesPath,
   votingPath,
 ];

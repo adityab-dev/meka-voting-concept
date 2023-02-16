@@ -46,14 +46,49 @@
 .rules-btm {
   display: flex;
   align-items: center;
-  gap: 1rem;
 
   font-size: 1.1rem;
+
+  padding-top: 1rem;
 }
 
-.rules-btm > input {
+.rules-btm > form > input {
   height: 1.25rem;
   width: 1.25rem;
 
   background-color: gray;
+
+  margin: auto 0;
+}
+
+.rules-btm > form > label {
+  display: flex;
+  align-items: center;
+}
+
+.rules-btm > form {
+  display: flex;
+  gap: 1rem;
+}
+
+.rules-btm-btns {
+  margin: auto;
+
+  margin-left: 14.75rem;
+}
+
+.rules-btm-btns > button {
+  font-size: 1.1rem;
+  color: white;
+
+  border: none;
+  border-radius: 3px;
+
+  padding: 0.5rem 1.25rem;
+
+  margin-left: 1rem;
+
+  background: rgb(77, 94, 190);
+
+  cursor: pointer;
 }

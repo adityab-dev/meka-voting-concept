@@ -1,7 +1,42 @@
 import "./RulesPage.css";
 
+import { useContext, useState } from "react";
+import login_context from "../../Context/Login-Context/login-context";
+
+import { Navigate, useNavigate } from "react-router-dom";
+import { loginPath, personalInfoPath, votingPath } from "../../constants/Paths";
+import { OnChange } from "../../Types/voting-candidate";
+import { doc, updateDoc } from "firebase/firestore";
+import { database } from "../../firebase-config/firebase-config";
+
 export default function RulesPage() {
-  return (
+  const [hasAccepted, setHasAccepted] = useState<boolean>(false);
+
+  const { docsData, setDocsStateHandler } = useContext(login_context);
+
+  const navigate = useNavigate();
+
+  function inputChangeHandler(event: OnChange) {
+    const { checked } = event.target;
+
+    setHasAccepted(checked);
+  }
+
+  function formSubmitHandler(event: React.FormEvent) {
+    event.preventDefault();
+
+    const dataToUpdate = doc(database, "users", docsData.userID);
+
+    const newDocsState = { ...docsData, hasAcceptedRules: hasAccepted };
+    updateDoc(dataToUpdate, newDocsState)
+      .then(() => setDocsStateHandler(newDocsState))
+      .then(() => navigate(votingPath))
+      .catch((error) => alert(error));
+  }
+
+  return !docsData.Email ? (
+    <Navigate to={loginPath} />
+  ) : (
     <section>
       <section className="rules-container">
         <div className="rules-center">
@@ -51,8 +86,27 @@ export default function RulesPage() {
             </div>
 
             <section className="rules-btm">
-              <input type="checkbox" />
-              <p>I understand and will follow these steps</p>
+              <form onSubmit={formSubmitHandler}>
+                <input
+                  id="rules"
+                  type="checkbox"
+                  value="Rules Accepted"
+                  onChange={inputChangeHandler}
+                  required
+                />
+                <label htmlFor="rules">I understand and will follow these steps</label>
+                <div className="rules-btm-btns">
+                  <button
+                    type="reset"
+                    onClick={() => {
+                      navigate(personalInfoPath);
+                    }}
+                  >
+                    Cancel
+                  </button>
+                  <button type="submit">Proceed</button>
+                </div>
+              </form>
             </section>
           </div>
         </div>

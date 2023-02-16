@@ -1,31 +1,11 @@
 import { persnalInfoNamesArray } from "../../../../constants/reg-input";
 
-import { collection, getDocs } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { useContext } from "react";
 
-import { useEffect, useState } from "react";
-import { app, database } from "../../../../firebase-config/firebase-config";
+import login_context from "../../../../Context/Login-Context/login-context";
 
 export default function PersonalInfoRightList() {
-  const auth = getAuth(app);
-
-  const [state, setState] = useState<any>();
-  const dbInstance = collection(database, "users");
-
-  useEffect(() => {
-    async function getData() {
-      const data = await getDocs(dbInstance);
-
-      setState(
-        data.docs.map((item) => {
-          return { ...item.data(), id: item.id };
-        })
-      );
-
-      getData();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const { docsData } = useContext(login_context);
 
   return (
     <>
@@ -35,12 +15,12 @@ export default function PersonalInfoRightList() {
             <label className="user-right-labels" htmlFor={name}>
               {name}
             </label>
-            <div id={name}></div>
+            <div id={name} style={{ color: "white", fontSize: "1.5rem", paddingBottom: "2.5rem" }}>
+              {docsData[name]}
+            </div>
           </li>
         );
       })}
-
-      <button onClick={() => console.log("state", state)}>state</button>
     </>
   );
 }

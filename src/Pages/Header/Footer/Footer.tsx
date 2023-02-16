@@ -3,6 +3,7 @@ import "./Footer.css";
 import { FaTelegramPlane } from "react-icons/fa";
 import { AiFillTwitterCircle, AiFillFacebook, AiFillInstagram } from "react-icons/ai";
 import { loginPath, registerPath } from "../../../constants/Paths";
+import { Link } from "react-router-dom";
 
 function Footer() {
   return (
@@ -37,9 +38,9 @@ function Footer() {
             <div className="footer-left-headings">GetIN</div>
 
             <div className="footer-left-headings-a">
-              <a href={registerPath}>Register</a>
+              <Link to={registerPath}>Register</Link>
 
-              <a href={loginPath}>Login</a>
+              <Link to={loginPath}>Login</Link>
             </div>
           </section>
 

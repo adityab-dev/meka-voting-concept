@@ -5,44 +5,17 @@ import { useState } from "react";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { addDoc, collection, getDocs } from "firebase/firestore";
 
-import {
-  NAME,
-  DOB,
-  PARENT_NAME,
-  EMAIL,
-  MOBILE_NUM,
-  PASSWORD,
-  RE_PASSWORD,
-  ADHAR_NUM,
-} from "../../../constants/reg-input";
-
 import { OnChange } from "../../../Types/voting-candidate";
 import { database } from "../../../firebase-config/firebase-config";
 
-export type registerationData = {
-  [NAME]: string;
-  [DOB]: string;
-  [PARENT_NAME]: string;
-  [EMAIL]: string;
-  [MOBILE_NUM]: string;
-  [PASSWORD]: string;
-  [RE_PASSWORD]: string;
-  [ADHAR_NUM]: string;
-};
+import { registerationData } from "../../../Types/Types";
 
-const initialRegisterValues: registerationData = {
-  Name: "",
-  "Date Of Birth": "",
-  "Father's/Mother's Name": "",
-  Email: "",
-  "Mobile No.": "",
-  Password: "",
-  "Re-enter Password": "",
-  "Adhar Number": "",
-};
+import { initialRegisterValues } from "../../../constants/init_constants";
 
 export default function RegistrationForm() {
   const [registerData, setRegisterData] = useState<registerationData>(initialRegisterValues);
+
+  // TODO: using registrationData instead of any causes issue.
   const [docsData, setDocsData] = useState<any>();
 
   const auth = getAuth();

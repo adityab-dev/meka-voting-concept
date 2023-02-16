@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import lets_vote_img from "../../../Assets/lets-vote-img.jpg";
 import { loginPath, registerPath } from "../../../constants/Paths";
 
@@ -16,7 +17,7 @@ function Header() {
             <div>About</div>
             <div>Contact</div>
             <button type="button" className="header-right-header-btn">
-              <a href={loginPath}>Login</a>
+              <Link to={loginPath}>Login</Link>
             </button>
           </div>
         </header>
@@ -26,7 +27,7 @@ function Header() {
           <p className="header-right-main-big-txt">Vote Today</p>
 
           <button type="button" className="header-right-main-btns">
-            <a href={registerPath}>REGISTER</a>
+            <Link to={registerPath}>REGISTER</Link>
           </button>
           <button type="button" className="header-right-main-btns">
             READ MORE

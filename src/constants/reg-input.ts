@@ -1,14 +1,16 @@
 const enum inputNames {
   NAME = "Name",
   DOB = "Date Of Birth",
-  PARENT_NAME = "Father's/Mother's Name",
+  PARENT_NAME = "Father's or Mother's Name",
   EMAIL = "Email",
-  MOBILE_NUM = "Mobile No.",
+  MOBILE_NUM = "Mobile No",
   PASSWORD = "Password",
   RE_PASSWORD = "Re-enter Password",
   ADHAR_NUM = "Adhar Number",
+  // HAS_ACCEPTED = "hasAcceptedRules",
+  // HAS_VOTED = "hasVoted",
+  // USER_ID = "userID",
 }
-
 export const NAME = inputNames.NAME;
 export const DOB = inputNames.DOB;
 export const PARENT_NAME = inputNames.PARENT_NAME;
@@ -17,6 +19,9 @@ export const MOBILE_NUM = inputNames.MOBILE_NUM;
 export const PASSWORD = inputNames.PASSWORD;
 export const RE_PASSWORD = inputNames.RE_PASSWORD;
 export const ADHAR_NUM = inputNames.ADHAR_NUM;
+// export const HAS_ACCEPTED = inputNames.HAS_ACCEPTED;
+// export const HAS_VOTED = inputNames.HAS_VOTED;
+// export const USER_ID = inputNames.USER_ID;
 
 export const inputNamesArray = [
   NAME,

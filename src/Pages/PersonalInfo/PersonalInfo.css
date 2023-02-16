@@ -5,6 +5,7 @@
 /* TODO => on without padding vp-ht-w isn't behaving as excepted */
 .info-header {
   padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 
 .user-header-navlink {
@@ -26,6 +27,8 @@
   padding: 0.125rem 2rem;
 
   border-radius: 5px;
+
+  cursor: pointer;
 }
 
 .user-header-list {
@@ -93,7 +96,7 @@
 .user-right-labels,
 .user-content-container {
   color: rgb(65, 148, 175);
-  font-size: 1.05rem;
+  font-size: 1.25rem;
 }
 
 .user-right-list {
