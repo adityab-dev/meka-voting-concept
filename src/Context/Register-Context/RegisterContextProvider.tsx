@@ -7,12 +7,12 @@ import { RegisterationContextType, registerationData } from "../../Types/Types";
 import { initialRegisterValues } from "../../constants/init_constants";
 import { OnChange } from "../../Types/voting-candidate";
 
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import { collection, doc, setDoc } from "firebase/firestore";
 import { database } from "../../firebase-config/firebase-config";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
 import login_context from "../Login-Context/login-context";
-import { personalInfoPath } from "../../constants/Paths";
+import { loginPath } from "../../constants/Paths";
 
 export default function RegisterContextProvider(props: { children: React.ReactElement }) {
   const { setDocsStateHandler } = useContext(login_context);
@@ -42,26 +42,17 @@ export default function RegisterContextProvider(props: { children: React.ReactEl
   function registerFormSubmitHandler(event: React.FormEvent) {
     event.preventDefault();
 
-    const { Email, Password } = registrationData;
+    const { Email, Password, Name } = registrationData;
 
     createUserWithEmailAndPassword(auth, Email, Password)
       .then(() => {
-        addDoc(dbInstance, registrationData);
-        setRegistrationData(initialRegisterValues);
-
-        alert("Account created");
+        setDoc(doc(dbInstance, Name), registrationData);
       })
-      .then(() => getDocs(dbInstance))
-      .then((docs) => {
-        let registeredUserInfoArray = docs.docs.map((item) => {
-          return { ...item.data() };
-        });
-
-        let registeredUserInfoObj = registeredUserInfoArray[0] as registerationData;
-
-        setDocsStateHandler(registeredUserInfoObj);
+      .then(() => {
+        setDocsStateHandler(registrationData);
         setRegistrationData(initialRegisterValues);
-        navigate(personalInfoPath);
+        alert("Account created");
+        navigate(loginPath);
       })
       .catch((error) => alert(error));
   }

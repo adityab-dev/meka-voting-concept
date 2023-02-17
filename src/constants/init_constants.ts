@@ -13,7 +13,6 @@ export const initialRegisterValues: registerationData = {
   hasAcceptedRules: false,
   hasVoted: false,
   votedFor: "",
-  userID: "",
 };
 
 export const initialLoginInputValues: LoginCredentials = {
@@ -33,5 +32,4 @@ export const docsData: registerationData = {
   hasAcceptedRules: false,
   hasVoted: false,
   votedFor: "",
-  userID: "",
 };

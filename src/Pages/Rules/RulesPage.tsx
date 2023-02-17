@@ -25,7 +25,7 @@ export default function RulesPage() {
   function formSubmitHandler(event: React.FormEvent) {
     event.preventDefault();
 
-    const dataToUpdate = doc(database, "users", docsData.userID);
+    const dataToUpdate = doc(database, "users", docsData.Name);
 
     const newDocsState = { ...docsData, hasAcceptedRules: hasAccepted };
     updateDoc(dataToUpdate, newDocsState)

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
+import { collection, query, where, onSnapshot } from "firebase/firestore";
 import { app, database } from "../../firebase-config/firebase-config";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
@@ -11,6 +11,7 @@ import context, { LoginContextValues } from "./login-context";
 import { docsData, initialLoginInputValues } from "../../constants/init_constants";
 
 import { registerationData, LoginCredentials } from "../../Types/Types";
+import { EMAIL } from "../../constants/reg-input";
 
 const initialDocsData = docsData;
 
@@ -44,6 +45,8 @@ export default function ContextProvider(props: { children: React.ReactElement })
   function formSubmitHandler(event: React.FormEvent) {
     event.preventDefault();
 
+    console.log("inside login-context");
+
     const { Email, Password } = inputValues;
 
     signInWithEmailAndPassword(auth, Email, Password)
@@ -62,31 +65,13 @@ export default function ContextProvider(props: { children: React.ReactElement })
         }
 
         async function getData() {
-          const data = await getDocs(dbInstance);
+          const emailQuery = query(dbInstance, where([EMAIL].toString(), "==", loggedInUserEmail));
 
-          const loggedInUserInfoArray = data.docs.filter((userInfo) => {
-            let userInfoObj = userInfo.data();
+          console.log("before snapshot");
 
-            if (userInfoObj.Email === loggedInUserEmail) {
-              return { ...userInfo, userID: userInfo.id };
-            }
-            return null;
+          onSnapshot(emailQuery, (data) => {
+            setDocsData(data.docs[0].data() as registerationData);
           });
-
-          const [loggedInUserInfoObj] = loggedInUserInfoArray;
-
-          const userID = loggedInUserInfoObj.id;
-
-          const loggedInUserInfo = {
-            ...loggedInUserInfoObj.data(),
-            userID: loggedInUserInfoObj.id,
-          } as registerationData;
-
-          setDocsData(loggedInUserInfo);
-
-          const dataToUpdate = doc(database, "users", userID);
-
-          updateDoc(dataToUpdate, loggedInUserInfo).catch((error) => alert(error));
         }
 
         getData();

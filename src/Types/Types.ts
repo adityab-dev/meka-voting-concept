@@ -22,7 +22,6 @@ export type registerationData = {
   hasAcceptedRules: boolean;
   hasVoted: boolean;
   votedFor: string;
-  userID: string;
 };
 
 export type LoginCredentials = {

@@ -57,7 +57,7 @@ export default function VotingPanelPage() {
         <VotingPanelCandidates votingCandidatesProp={votingCandidateProps} />
         <button
           onClick={() => {
-            const dataToUpdate = doc(database, "users", docsData.userID);
+            const dataToUpdate = doc(database, "users", docsData.Name);
 
             let newDocsState: registerationData = {
               ...docsData,

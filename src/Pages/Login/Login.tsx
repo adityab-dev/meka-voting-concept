@@ -4,8 +4,19 @@ import "./Login.css";
 
 import LoginForm from "./LoginForm/LoginForm";
 
+import { Navigate } from "react-router-dom";
+
+import { useContext } from "react";
+
+import login_context from "../../Context/Login-Context/login-context";
+import { personalInfoPath } from "../../constants/Paths";
+
 export default function LoginPage() {
-  return (
+  const {
+    docsData: { Email },
+  } = useContext(login_context);
+
+  return !Email ? (
     <div className="login-container">
       <img className="login-img login-margin-top" src={login} alt="Please Login" />
 
@@ -14,5 +25,7 @@ export default function LoginPage() {
         <LoginForm />
       </div>
     </div>
+  ) : (
+    <Navigate to={personalInfoPath} />
   );
 }
