@@ -8,6 +8,7 @@ import {
   RE_PASSWORD,
   ADHAR_NUM,
 } from "../constants/reg-input";
+import { OnChange } from "./voting-candidate";
 
 export type registerationData = {
   [NAME]: string;
@@ -27,4 +28,12 @@ export type registerationData = {
 export type LoginCredentials = {
   [EMAIL]: string;
   [PASSWORD]: string;
+};
+
+export type FormEvent = React.FormEvent;
+
+export type RegisterationContextType = {
+  registerInputChangeHandler: (event: OnChange) => void;
+  registerFormSubmitHandler: (event: FormEvent) => void;
+  registrationData: registerationData;
 };

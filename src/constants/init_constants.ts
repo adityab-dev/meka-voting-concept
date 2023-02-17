@@ -16,7 +16,22 @@ export const initialRegisterValues: registerationData = {
   userID: "",
 };
 
-export const initialInputValues: LoginCredentials = {
+export const initialLoginInputValues: LoginCredentials = {
   [EMAIL]: "",
   [PASSWORD]: "",
+};
+
+export const docsData: registerationData = {
+  "Adhar Number": "",
+  Email: "",
+  Password: "",
+  "Re-enter Password": "",
+  Name: "",
+  "Date Of Birth": "",
+  "Father's or Mother's Name": "",
+  "Mobile No": "",
+  hasAcceptedRules: false,
+  hasVoted: false,
+  votedFor: "",
+  userID: "",
 };

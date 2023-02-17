@@ -1,5 +1,5 @@
 import React from "react";
-import { EMAIL, PASSWORD } from "../../constants/reg-input";
+import { docsData, initialLoginInputValues } from "../../constants/init_constants";
 
 import { registerationData, LoginCredentials } from "../../Types/Types";
 import { OnChange } from "../../Types/voting-candidate";
@@ -9,37 +9,15 @@ export type LoginContextValues = {
   docsData: registerationData;
   formSubmitHandler: (event: React.FormEvent) => void;
   inputChangeHandler: (event: OnChange) => void;
-  setDocsStateHandler: (newDocsState: DocsData) => void;
-};
-
-export type DocsData = registerationData;
-
-export const docsData: DocsData = {
-  "Adhar Number": "",
-  Email: "",
-  Password: "",
-  "Re-enter Password": "",
-  Name: "",
-  "Date Of Birth": "",
-  "Father's or Mother's Name": "",
-  "Mobile No": "",
-  hasAcceptedRules: false,
-  hasVoted: false,
-  votedFor: "",
-  userID: "",
-};
-
-export const initialInputValues: LoginCredentials = {
-  [EMAIL]: "",
-  [PASSWORD]: "",
+  setDocsStateHandler: (newDocsState: registerationData) => void;
 };
 
 const login_context = React.createContext<LoginContextValues>({
-  docsData,
-  inputValues: initialInputValues,
+  docsData: docsData,
+  inputValues: initialLoginInputValues,
   formSubmitHandler: (event: React.FormEvent): void => {},
   inputChangeHandler: (event: OnChange): void => {},
-  setDocsStateHandler: (newDocsState: DocsData) => {},
+  setDocsStateHandler: (newDocsState: registerationData) => {},
 });
 
 export default login_context;

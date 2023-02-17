@@ -5,7 +5,7 @@ import { OnChange } from "../../Types/voting-candidate";
 import VotingPanelCandidates from "./VotingPanelCandidated/VotingPanelCandidated";
 
 import { useContext } from "react";
-import login_context, { DocsData } from "../../Context/Login-Context/login-context";
+import login_context from "../../Context/Login-Context/login-context";
 
 import { useNavigate, Navigate } from "react-router-dom";
 import {
@@ -18,6 +18,7 @@ import {
 } from "../../constants/Paths";
 import { doc, updateDoc } from "firebase/firestore";
 import { database } from "../../firebase-config/firebase-config";
+import { registerationData } from "../../Types/Types";
 
 const initialState = { value: "" };
 
@@ -58,7 +59,11 @@ export default function VotingPanelPage() {
           onClick={() => {
             const dataToUpdate = doc(database, "users", docsData.userID);
 
-            let newDocsState: DocsData = { ...docsData, hasVoted: true, votedFor: state.value };
+            let newDocsState: registerationData = {
+              ...docsData,
+              hasVoted: true,
+              votedFor: state.value,
+            };
             updateDoc(dataToUpdate, newDocsState)
               .then(() => setDocsStateHandler(newDocsState))
               .then(() => navigate(personalInfoPath))

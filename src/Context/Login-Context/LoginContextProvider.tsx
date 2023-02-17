@@ -6,28 +6,25 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
 import { OnChange } from "../../Types/voting-candidate";
 
-import context, {
-  LoginContextValues,
-  initialInputValues,
-  DocsData,
-  docsData,
-} from "./login-context";
+import context, { LoginContextValues } from "./login-context";
+
+import { docsData, initialLoginInputValues } from "../../constants/init_constants";
 
 import { registerationData, LoginCredentials } from "../../Types/Types";
 
 const initialDocsData = docsData;
 
 export default function ContextProvider(props: { children: React.ReactElement }) {
-  const [inputValues, setInputValues] = useState<LoginCredentials>(initialInputValues);
+  const [inputValues, setInputValues] = useState<LoginCredentials>(initialLoginInputValues);
 
-  const [docsData, setDocsData] = useState<DocsData>(initialDocsData);
+  const [docsData, setDocsData] = useState<registerationData>(initialDocsData);
 
   let loggedInUserEmail: string = "";
 
   const auth = getAuth(app);
   const dbInstance = collection(database, "users");
 
-  function setDocsStateHandler(newDocsState: DocsData) {
+  function setDocsStateHandler(newDocsState: registerationData) {
     setDocsData(newDocsState);
   }
 
@@ -54,13 +51,13 @@ export default function ContextProvider(props: { children: React.ReactElement })
         if (typeof response.user.email === "string") {
           loggedInUserEmail = response.user.email;
           alert("signed in");
-          setInputValues(initialInputValues);
+          setInputValues(initialLoginInputValues);
         }
       })
       .catch((error) => alert(error))
       .finally(() => {
         if (!loggedInUserEmail) {
-          setInputValues(initialInputValues);
+          setInputValues(initialLoginInputValues);
           return;
         }
 

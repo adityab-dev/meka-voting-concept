@@ -20,11 +20,19 @@ import {
   votingPath,
 } from "./constants/Paths";
 import HeaderNavLayout from "./Layouts/HeaderNavLayot/HeaderNavLayot";
+import RegisterContextProvider from "./Context/Register-Context/RegisterContextProvider";
 
 function App() {
   const router = createBrowserRouter([
     { path: headerPath, element: <Header /> },
-    { path: registerPath, element: <RegistrationPage /> },
+    {
+      path: registerPath,
+      element: (
+        <RegisterContextProvider>
+          <RegistrationPage />
+        </RegisterContextProvider>
+      ),
+    },
     { path: loginPath, element: <LoginPage /> },
     {
       path: personalInfoPath,
