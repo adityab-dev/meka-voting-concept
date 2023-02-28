@@ -1,5 +1,12 @@
-import { LoginCredentials, registerationData } from "../Types/Types";
+import { Election, ElectionDataItem, LoginCredentials, registerationData } from "../Types/Types";
 import { EMAIL, PASSWORD } from "./reg-input";
+
+export const initialElectionDataItem: ElectionDataItem = {
+  electionName: "",
+  hasAccptedRules: false,
+  hasVoted: false,
+  votedFor: "",
+};
 
 export const initialRegisterValues: registerationData = {
   Name: "",
@@ -10,9 +17,7 @@ export const initialRegisterValues: registerationData = {
   Password: "",
   "Re-enter Password": "",
   "Adhar Number": "",
-  hasAcceptedRules: false,
-  hasVoted: false,
-  votedFor: "",
+  electinData: [initialElectionDataItem],
 };
 
 export const initialLoginInputValues: LoginCredentials = {
@@ -29,7 +34,10 @@ export const docsData: registerationData = {
   "Date Of Birth": "",
   "Father's or Mother's Name": "",
   "Mobile No": "",
-  hasAcceptedRules: false,
-  hasVoted: false,
-  votedFor: "",
+  electinData: [initialElectionDataItem],
+};
+
+export const initialElectionEvent: Election = {
+  election: "",
+  date: "",
 };

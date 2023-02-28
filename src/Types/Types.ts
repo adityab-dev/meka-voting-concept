@@ -10,6 +10,15 @@ import {
 } from "../constants/reg-input";
 import { OnChange } from "./voting-candidate";
 
+import { election, date } from "../constants/voting-form ";
+
+export type ElectionDataItem = {
+  electionName: string;
+  hasAccptedRules: boolean;
+  hasVoted: boolean;
+  votedFor: string;
+};
+
 export type registerationData = {
   [NAME]: string;
   [DOB]: string;
@@ -19,9 +28,10 @@ export type registerationData = {
   [PASSWORD]: string;
   [RE_PASSWORD]: string;
   [ADHAR_NUM]: string;
-  hasAcceptedRules: boolean;
-  hasVoted: boolean;
-  votedFor: string;
+  electinData: ElectionDataItem[];
+  // hasAcceptedRules: boolean;
+  // hasVoted: boolean;
+  // votedFor: string;
 };
 
 export type LoginCredentials = {
@@ -35,4 +45,9 @@ export type RegisterationContextType = {
   registerInputChangeHandler: (event: OnChange) => void;
   registerFormSubmitHandler: (event: FormEvent) => void;
   registrationData: registerationData;
+};
+
+export type Election = {
+  [election]: string;
+  [date]: string;
 };

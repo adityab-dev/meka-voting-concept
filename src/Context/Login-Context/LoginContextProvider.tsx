@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 
 import { collection, query, where, onSnapshot } from "firebase/firestore";
+
 import { app, database } from "../../firebase-config/firebase-config";
+
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-import { OnChange } from "../../Types/voting-candidate";
-
-import context, { LoginContextValues } from "./login-context";
+import loginContext, { LoginContextValues } from "./login-context";
 
 import { docsData, initialLoginInputValues } from "../../constants/init_constants";
 
-import { registerationData, LoginCredentials } from "../../Types/Types";
 import { EMAIL } from "../../constants/reg-input";
+
+import { OnChange } from "../../Types/voting-candidate";
+
+import { registerationData, LoginCredentials } from "../../Types/Types";
 
 const initialDocsData = docsData;
 
-export default function ContextProvider(props: { children: React.ReactElement }) {
+function LoginContextProvider(props: { children: React.ReactElement }) {
   const [inputValues, setInputValues] = useState<LoginCredentials>(initialLoginInputValues);
 
   const [docsData, setDocsData] = useState<registerationData>(initialDocsData);
@@ -45,17 +48,12 @@ export default function ContextProvider(props: { children: React.ReactElement })
   function formSubmitHandler(event: React.FormEvent) {
     event.preventDefault();
 
-    console.log("inside login-context");
-
     const { Email, Password } = inputValues;
 
     signInWithEmailAndPassword(auth, Email, Password)
-      .then((response) => {
-        if (typeof response.user.email === "string") {
-          loggedInUserEmail = response.user.email;
-          alert("signed in");
-          setInputValues(initialLoginInputValues);
-        }
+      .then(() => {
+        loggedInUserEmail = Email;
+        setInputValues(initialLoginInputValues);
       })
       .catch((error) => alert(error))
       .finally(() => {
@@ -66,8 +64,6 @@ export default function ContextProvider(props: { children: React.ReactElement })
 
         async function getData() {
           const emailQuery = query(dbInstance, where([EMAIL].toString(), "==", loggedInUserEmail));
-
-          console.log("before snapshot");
 
           onSnapshot(emailQuery, (data) => {
             setDocsData(data.docs[0].data() as registerationData);
@@ -86,5 +82,7 @@ export default function ContextProvider(props: { children: React.ReactElement })
     setDocsStateHandler,
   };
 
-  return <context.Provider value={providerValueProp}>{props.children}</context.Provider>;
+  return <loginContext.Provider value={providerValueProp}>{props.children}</loginContext.Provider>;
 }
+
+export default LoginContextProvider;

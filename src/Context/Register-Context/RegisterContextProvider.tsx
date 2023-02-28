@@ -1,7 +1,6 @@
 import registerationContext from "./register-context";
 
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { RegisterationContextType, registerationData } from "../../Types/Types";
 import { initialRegisterValues } from "../../constants/init_constants";
@@ -12,15 +11,12 @@ import { database } from "../../firebase-config/firebase-config";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 
 import login_context from "../Login-Context/login-context";
-import { loginPath } from "../../constants/Paths";
 
 export default function RegisterContextProvider(props: { children: React.ReactElement }) {
   const { setDocsStateHandler } = useContext(login_context);
 
   const [registrationData, setRegistrationData] =
     useState<registerationData>(initialRegisterValues);
-
-  const navigate = useNavigate();
 
   const auth = getAuth();
 
@@ -52,7 +48,6 @@ export default function RegisterContextProvider(props: { children: React.ReactEl
         setDocsStateHandler(registrationData);
         setRegistrationData(initialRegisterValues);
         alert("Account created");
-        navigate(loginPath);
       })
       .catch((error) => alert(error));
   }

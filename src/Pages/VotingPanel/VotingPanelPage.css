@@ -24,6 +24,24 @@
   height: 85vh;
 }
 
+.vote-center-btn {
+  font-size: 1.25rem;
+  padding: 0.5rem 1rem;
+  background: lightblue;
+  color: black;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.vote-center-btn-disabled {
+  background: rgb(177, 177, 177);
+
+  color: white;
+
+  cursor: not-allowed;
+}
+
 .vote-candidate-header {
   display: flex;
 }

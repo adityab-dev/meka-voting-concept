@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
 
-  padding-top: 8rem;
+  padding-top: 4rem;
 }
 
 .elect-headings {
@@ -33,4 +33,54 @@
   font-weight: 500;
 
   margin-bottom: 2rem;
+
+  cursor: pointer;
+}
+
+.admin-election-controller {
+  font-size: 1.25rem;
+
+  background: lightblue;
+
+  margin: 0;
+  padding: 0.5rem 1rem;
+
+  width: max-content;
+
+  border: none;
+  border-radius: 3px;
+
+  cursor: pointer;
+
+  display: none;
+}
+
+.display-add-election-btn {
+  display: block;
+}
+
+.elect-admin-form {
+  display: flex;
+  /* flex-direction: column; */
+}
+
+.elect-labels {
+  color: white;
+  font-size: 1.25rem;
+}
+
+.elect-inputs {
+  font-size: 1.1rem;
+  margin: 0;
+}
+
+.elect-submit {
+  font-size: 1.1rem;
+}
+
+.elect-admin-form {
+  margin: 0;
+  padding: 2rem;
+
+  /* background: rgb(0, 0, 29); */
 }

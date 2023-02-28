@@ -9,14 +9,17 @@ import { Navigate } from "react-router-dom";
 import { useContext } from "react";
 
 import login_context from "../../Context/Login-Context/login-context";
-import { personalInfoPath } from "../../constants/Paths";
+import { adminPath, Paths, personalInfoPath } from "../../constants/Paths";
 
 export default function LoginPage() {
-  const {
-    docsData: { Email },
-  } = useContext(login_context);
+  const { docsData } = useContext(login_context);
 
-  return !Email ? (
+  let navigateTo: Paths;
+
+  if (docsData.Name === "ADMIN") navigateTo = adminPath;
+  else navigateTo = personalInfoPath;
+
+  return !docsData.Email ? (
     <div className="login-container">
       <img className="login-img login-margin-top" src={login} alt="Please Login" />
 
@@ -26,6 +29,6 @@ export default function LoginPage() {
       </div>
     </div>
   ) : (
-    <Navigate to={personalInfoPath} />
+    <Navigate to={navigateTo} />
   );
 }

@@ -1,25 +1,34 @@
-import { votingList } from "../../../constants/voting-list";
-import { OnChange } from "../../../Types/voting-candidate";
 import CandidateDescription from "./Candidate-Description/Candidate-Description";
 
 import CandidateLeft from "./Candidate-Left/Candidate-Left";
 import CandidateMid from "./Candidate-Mid/Candidate-Mid";
 import CandidatesRight from "./Candidates-Right/Candidates-Right";
 
-export default function VotingPanelCandidates(props: {
-  votingCandidatesProp: { onRadioClick: (event: OnChange) => void; value: string };
-}) {
-  const { onRadioClick, value } = props.votingCandidatesProp;
+import { useContext } from "react";
+import votingContext from "../../../Context/Voting-Context/voting-context";
+
+import { votingList } from "../../../constants/voting-list";
+
+function VotingPanelCandidates() {
+  const {
+    electionDataItem: { electionName },
+  } = useContext(votingContext);
 
   return (
     <>
       {votingList.map((candidate) => {
-        const { name, education, affiliation, age, logo } = candidate;
+        const { name, education, affiliation, age, logo } =
+          candidate;
 
-        const candidateLeftProps = { onRadioClick, name };
-        const candidateMidProps = { name, affiliation, logo };
+        const candidateLeftProps = { name };
+
+        const candidateMidProps = {
+          name,
+          affiliation,
+          logo,
+        };
+
         const candidateDescriptionProps = {
-          value,
           name,
           age,
           affiliation,
@@ -27,21 +36,38 @@ export default function VotingPanelCandidates(props: {
         };
 
         return (
-          <div key={name} style={{ paddingBottom: "2rem" }}>
+          <div
+            key={name}
+            style={{ paddingBottom: "2rem" }}
+          >
             <div
               className={`vote-candidate-header candidate-white ${
-                value === name ? "vote-candidate-border candidate-gray" : ""
+                electionName === name
+                  ? "vote-candidate-border candidate-gray"
+                  : ""
               }`}
             >
-              <CandidateLeft candidatesleftProps={candidateLeftProps} />
-              <CandidateMid candidateMidProps={candidateMidProps} />
+              <CandidateLeft
+                candidatesleftProps={candidateLeftProps}
+              />
+
+              <CandidateMid
+                candidateMidProps={candidateMidProps}
+              />
+
               <CandidatesRight />
             </div>
 
-            <CandidateDescription candidateDescriptionProps={candidateDescriptionProps} />
+            <CandidateDescription
+              candidateDescriptionProps={
+                candidateDescriptionProps
+              }
+            />
           </div>
         );
       })}
     </>
   );
 }
+
+export default VotingPanelCandidates;

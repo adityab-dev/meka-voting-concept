@@ -1,57 +1,24 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouteObject, RouterProvider } from "react-router-dom";
 
 import "./App.css";
 
-import ElectionPage from "./Pages/Election/ElectionPage";
-import Header from "./Pages/Header/Header";
-import LoginPage from "./Pages/Login/Login";
-import PersonInfoPage from "./Pages/PersonalInfo/PersonalInfo";
-import RegistrationPage from "./Pages/Registration/Registration";
-import RulesPage from "./Pages/Rules/RulesPage";
-import VotingPanelPage from "./Pages/VotingPanel/VotingPanelPage";
+import votersRouter from "./Routers/voter-router";
+import adminRouter from "./Routers/admin-router";
 
-import {
-  headerPath,
-  loginPath,
-  registerPath,
-  personalInfoPath,
-  electionsPath,
-  rulesPath,
-  votingPath,
-} from "./constants/Paths";
-import HeaderNavLayout from "./Layouts/HeaderNavLayot/HeaderNavLayot";
-import RegisterContextProvider from "./Context/Register-Context/RegisterContextProvider";
+import { useContext } from "react";
+import login_context from "./Context/Login-Context/login-context";
 
 function App() {
-  const router = createBrowserRouter([
-    { path: headerPath, element: <Header /> },
-    {
-      path: registerPath,
-      element: (
-        <RegisterContextProvider>
-          <RegistrationPage />
-        </RegisterContextProvider>
-      ),
-    },
-    { path: loginPath, element: <LoginPage /> },
-    {
-      path: personalInfoPath,
-      element: <HeaderNavLayout />,
-      children: [
-        {
-          index: true,
-          element: <PersonInfoPage />,
-        },
-        {
-          path: electionsPath,
-          element: <ElectionPage />,
-        },
-      ],
-    },
+  const {
+    docsData: { Name },
+  } = useContext(login_context);
 
-    { path: rulesPath, element: <RulesPage /> },
-    { path: votingPath, element: <VotingPanelPage /> },
-  ]);
+  let routerInstance: RouteObject[];
+
+  if (Name !== "ADMIN") routerInstance = votersRouter;
+  else routerInstance = adminRouter;
+
+  const router = createBrowserRouter(routerInstance);
 
   return <RouterProvider router={router} />;
 }

@@ -12,7 +12,7 @@ export type LoginContextValues = {
   setDocsStateHandler: (newDocsState: registerationData) => void;
 };
 
-const login_context = React.createContext<LoginContextValues>({
+const loginContext = React.createContext<LoginContextValues>({
   docsData: docsData,
   inputValues: initialLoginInputValues,
   formSubmitHandler: (event: React.FormEvent): void => {},
@@ -20,4 +20,4 @@ const login_context = React.createContext<LoginContextValues>({
   setDocsStateHandler: (newDocsState: registerationData) => {},
 });
 
-export default login_context;
+export default loginContext;

@@ -1,85 +1,57 @@
 import "./VotingPanelPage.css";
-
-import { useState } from "react";
-import { OnChange } from "../../Types/voting-candidate";
 import VotingPanelCandidates from "./VotingPanelCandidated/VotingPanelCandidated";
 
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+
+import votingContext from "../../Context/Voting-Context/voting-context";
 import login_context from "../../Context/Login-Context/login-context";
 
-import { useNavigate, Navigate } from "react-router-dom";
-import {
-  headerPath,
-  loginPath,
-  Paths,
-  personalInfoPath,
-  rulesPath,
-  votingPath,
-} from "../../constants/Paths";
-import { doc, updateDoc } from "firebase/firestore";
-import { database } from "../../firebase-config/firebase-config";
-import { registerationData } from "../../Types/Types";
+import { personalInfoPath } from "../../constants/Paths";
 
-const initialState = { value: "" };
+export type HasVotedInElection = 0 | 1;
 
-export default function VotingPanelPage() {
-  const [state, setState] = useState<{ value: string }>(initialState);
-  const { docsData, setDocsStateHandler } = useContext(login_context);
+function VotingPanelPage() {
+  const { updateVotingData, getElectionName } =
+    useContext(votingContext);
+
+  const {
+    docsData: { electinData },
+  } = useContext(login_context);
+
   const navigate = useNavigate();
 
-  function clickHandler(event: OnChange) {
-    const { value: CANDIDATE_NAME } = event.target;
+  const { electionID } = useParams();
 
-    console.log(CANDIDATE_NAME);
+  const filteredArr = electinData.filter(
+    (el) => el.electionName === electionID
+  );
 
-    setState((prevState) => {
-      return { ...prevState, value: CANDIDATE_NAME };
-    });
-  }
+  let hasVoted: boolean;
 
-  const votingCandidateProps = {
-    onRadioClick: clickHandler,
-    value: state.value,
-  };
+  if (!filteredArr.length) hasVoted = false;
+  else hasVoted = filteredArr[0].hasVoted;
 
-  let path: Paths = headerPath;
+  useEffect(() => {
+    if (!electionID) getElectionName("");
+    else getElectionName(electionID);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [electionID]);
 
-  if (!docsData.Email) path = loginPath;
-  if (docsData.Email && !docsData.hasAcceptedRules) path = rulesPath;
-  if (docsData.Email && docsData.hasAcceptedRules) path = votingPath;
-
-  return path !== votingPath ? (
-    <Navigate to={path} />
-  ) : (
+  return (
     <section className="voting-container">
       <div className="vote-center">
         <h1 className="vote-heading">Voting Panel</h1>
-        <VotingPanelCandidates votingCandidatesProp={votingCandidateProps} />
+        <VotingPanelCandidates />
         <button
+          className={`vote-center-btn ${
+            hasVoted ? "vote-center-btn-disabled" : ""
+          }`}
           onClick={() => {
-            const dataToUpdate = doc(database, "users", docsData.Name);
-
-            let newDocsState: registerationData = {
-              ...docsData,
-              hasVoted: true,
-              votedFor: state.value,
-            };
-            updateDoc(dataToUpdate, newDocsState)
-              .then(() => setDocsStateHandler(newDocsState))
-              .then(() => navigate(personalInfoPath))
-              .catch((error) => alert(error));
-
-            setDocsStateHandler(newDocsState);
+            updateVotingData();
+            navigate(personalInfoPath);
           }}
-          style={{
-            fontSize: "1.25rem",
-            padding: "0.5rem 1rem",
-            background: "lightblue",
-            color: "black",
-            border: "none",
-            borderRadius: "3px",
-            cursor: "pointer",
-          }}
+          disabled={hasVoted}
         >
           Vote
         </button>
@@ -87,3 +59,5 @@ export default function VotingPanelPage() {
     </section>
   );
 }
+
+export default VotingPanelPage;

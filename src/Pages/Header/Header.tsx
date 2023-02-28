@@ -4,7 +4,7 @@ import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import Steps from "./Steps/Steps";
 
-export default function PersonalInfoPage() {
+export default function HeaderPage() {
   return (
     <>
       <Header />

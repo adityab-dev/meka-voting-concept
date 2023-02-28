@@ -1,5 +1,9 @@
 .info-container {
   background: rgb(0, 0, 29);
+
+  height: max-content;
+
+  padding-bottom: 6rem;
 }
 
 /* TODO => on without padding vp-ht-w isn't behaving as excepted */
@@ -29,6 +33,10 @@
   border-radius: 5px;
 
   cursor: pointer;
+}
+
+.user-form-header-btn-not-allowed {
+  cursor: not-allowed;
 }
 
 .user-header-list {

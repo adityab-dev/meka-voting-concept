@@ -1,12 +1,29 @@
-import { OnChange } from "../../../../Types/voting-candidate";
+import votingContext from "../../../../Context/Voting-Context/voting-context";
+import login_context from "../../../../Context/Login-Context/login-context";
+import { useContext } from "react";
+import { useParams } from "react-router-dom";
+import { HasVotedInElection } from "../../VotingPanelPage";
 
-export default function CandidateLeft(props: {
+function CandidateLeft(props: {
   candidatesleftProps: {
     name: string;
-    onRadioClick: (event: OnChange) => void;
   };
 }) {
-  const { name, onRadioClick } = props.candidatesleftProps;
+  const { radioClickHandler } = useContext(votingContext);
+
+  const {
+    docsData: { electinData },
+  } = useContext(login_context);
+
+  const { name } = props.candidatesleftProps;
+
+  const { electionID } = useParams();
+
+  const electionItem = electinData.filter(
+    (electionItem) => electionItem.electionName === electionID
+  );
+
+  const hasVotedInElection = electionItem.length as HasVotedInElection;
 
   return (
     <div className="vote-candidate-left">
@@ -16,8 +33,11 @@ export default function CandidateLeft(props: {
         value={name}
         id={name}
         name="candidates"
-        onChange={(event) => onRadioClick(event)}
+        onChange={(event) => radioClickHandler(event)}
+        disabled={hasVotedInElection ? true : false}
       />
     </div>
   );
 }
+
+export default CandidateLeft;

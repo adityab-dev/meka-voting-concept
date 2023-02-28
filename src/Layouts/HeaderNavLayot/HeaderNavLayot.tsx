@@ -14,7 +14,7 @@ export default function HeaderNavLayout() {
   return !docsData.Email ? (
     <Navigate to={loginPath} />
   ) : (
-    <div className="info-container viewport-height-width">
+    <div className="info-container">
       <CommonHeader />
       <Outlet />
     </div>

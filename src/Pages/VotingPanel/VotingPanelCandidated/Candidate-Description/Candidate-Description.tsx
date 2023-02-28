@@ -1,17 +1,26 @@
-export default function CandidateDescription(props: {
-  candidateDescriptionProps: {
-    value: string;
-    name: string;
-    age: number;
-    affiliation: string;
-    education: string;
-  };
+import { useContext } from "react";
+import votingContext from "../../../../Context/Voting-Context/voting-context";
+
+export type CandidateDescriptionProps = {
+  name: string;
+  age: number;
+  affiliation: string;
+  education: string;
+};
+
+function CandidateDescription(props: {
+  candidateDescriptionProps: CandidateDescriptionProps;
 }) {
-  const { value, name, age, affiliation, education } = props.candidateDescriptionProps;
+  const {
+    electionDataItem: { electionName },
+  } = useContext(votingContext);
+
+  const { name, age, affiliation, education } =
+    props.candidateDescriptionProps;
 
   return (
     <>
-      {value === name ? (
+      {electionName === name ? (
         <div className="voter-candidate-body">
           <div className="voter-candidate-body-center">
             <div>Name : {name}</div>
@@ -24,3 +33,5 @@ export default function CandidateDescription(props: {
     </>
   );
 }
+
+export default CandidateDescription;

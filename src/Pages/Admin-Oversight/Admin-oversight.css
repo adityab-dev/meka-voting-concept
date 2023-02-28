@@ -1,0 +1,38 @@
+.oversight-container {
+  height: 100vh;
+  width: 100vw;
+
+  background: rgb(0, 0, 32);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.oversight-candidate-padding {
+  width: 60%;
+  padding: 0 1.5rem;
+
+  background: lightgoldenrodyellow;
+
+  border-radius: 3px;
+}
+
+.oversight-candidate {
+  height: 4rem;
+
+  background: lightgoldenrodyellow;
+
+  display: flex;
+  gap: 5rem;
+  align-items: center;
+
+  font-size: 1.5rem;
+}
+
+.oversight-candidate-img {
+  height: 3rem;
+  width: 3rem;
+}
